@@ -37,7 +37,7 @@ Route::get('/test4', [TestController::class, 'index']);
 
 Route::get('/posts/create', [PostsController::class, 'create']);
 
-Route::get('/posts/store', [PostsController::class, 'store']);
+Route::post('/posts/store', [PostsController::class, 'store']);
 
 Route::get('/posts/edit', [PostsController::class, 'edit']);
 

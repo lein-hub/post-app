@@ -8,13 +8,14 @@ class PostsController extends Controller
 {
     public function create()
     {
-        $star = '별';
-        $name = 'ㅎㅇ';
-        return view('posts.create', compact('star', 'name'));
+        return view('posts.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $title = $request->title;
+        $content = $request->content;
+        dd($request);
     }
 
     public function edit()
