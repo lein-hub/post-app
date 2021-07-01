@@ -10,8 +10,14 @@
     <div class="container">
         <form action="/posts/store" method="post">
             @csrf
-            <p><input type="text" name="title" placeholder="Title"></p>
-            <p><textarea name="content" id="content" cols="30" rows="10"></textarea></p>
+            <p><input type="text" name="title" placeholder="Title" value={{ old('title') }}></p>
+            @error('title')
+                <div>{{ $message }}</div>
+            @enderror
+            <p><textarea name="content" id="content" cols="30" rows="10">{{ old('content') }}</textarea></p>
+            @error('content')
+                <div>{{ $message }}</div>
+            @enderror
             <p><button type="submit">submit</button></p>
         </form>
     </div>

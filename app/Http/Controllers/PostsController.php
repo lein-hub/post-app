@@ -15,6 +15,10 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required'
+        ]);
         $title = $request->title;
         $content = $request->content;
         // dd($request);
@@ -47,7 +51,10 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Post::All();
-        return $posts;
+        $posts = Post::orderBy('created_at', 'desc')->paginate(2);
+        // $posts = Post::latest()->paginate(2);
+
+        // dd($posts[0]->created_at);
+        return view('posts.index', compact('posts'));
     }
 }
