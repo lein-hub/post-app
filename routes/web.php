@@ -42,7 +42,7 @@ Route::get('/test3', function () {
 
 Route::get('/test4', [TestController::class, 'index']);
 
-Route::get('/posts/create', [PostsController::class, 'create']);
+Route::get('/posts/create', [PostsController::class, 'create']);/*->middleware(['auth']);*/
 
 Route::post('/posts/store', [PostsController::class, 'store']);
 
@@ -52,6 +52,6 @@ Route::get('/posts/update', [PostsController::class, 'update']);
 
 Route::get('/posts/destroy', [PostsController::class, 'destroy']);
 
-Route::get('/posts/show', [PostsController::class, 'show']);
+Route::get('/posts/show/{id}', [PostsController::class, 'show'])->name('posts.show');
 
-Route::get('/posts/index', [PostsController::class, 'index']);
+Route::get('/posts/index', [PostsController::class, 'index'])->name('posts.index');

@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth'])->except('index', 'show');
+    }
+
     public function create()
     {
         return view('posts.create');
@@ -45,8 +51,13 @@ class PostsController extends Controller
     {
     }
 
-    public function show()
+    public function show(Request $request)
     {
+        $currentPage = $request->page;
+        $post = Post::find($request->id);
+
+
+        return view('posts.show', compact('post', 'currentPage'));
     }
 
     public function index()

@@ -10,7 +10,7 @@
     <div class="container">
         <form action="/posts/store" method="post">
             @csrf
-            <p><input type="text" name="title" placeholder="Title" value={{ old('title') }}></p>
+            <p><input type="text" name="title" placeholder="Title" value="{{ old('title') }}"></p>
             @error('title')
                 <div>{{ $message }}</div>
             @enderror
